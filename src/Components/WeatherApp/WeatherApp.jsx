@@ -9,7 +9,7 @@ import { GiHeavyRain } from "react-icons/gi";
 import { BsSnow2 } from "react-icons/bs";
 import { RiCloudWindyLine } from "react-icons/ri";
 import { WiHumidity } from "react-icons/wi";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const WeatherApp = () => {
   const defaultState = {
@@ -77,10 +77,19 @@ const WeatherApp = () => {
     setWData(data);
   };
 
+  const enterSearch = (e) => {
+    if (e.key === "Enter") search();
+  };
+
   return (
     <div className="container">
       <div className="top-bar">
-        <input type="text" className="cityInput" placeholder="Search..." />
+        <input
+          type="text"
+          className="cityInput"
+          placeholder="Search..."
+          onKeyDown={(e) => enterSearch(e)}
+        />
         <div className="search-icon" onClick={search}>
           <BsSearch />
         </div>
