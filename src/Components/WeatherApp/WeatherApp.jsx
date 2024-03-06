@@ -61,6 +61,8 @@ const WeatherApp = () => {
   let api_key = "677296da301fdcc5d410e99f32247c8b";
   const [w_data, setWData] = useState(defaultState);
 
+  const weatherCode = w_data.weather[0].icon;
+
   const search = async () => {
     const element = document.getElementsByClassName("cityInput");
     if (element[0].value === "") {
@@ -81,6 +83,9 @@ const WeatherApp = () => {
     if (e.key === "Enter") search();
   };
 
+  console.log("weatherCode", weatherCode);
+  console.log("weatherCode", ["01d", "01n"].includes(weatherCode));
+
   return (
     <div className="container">
       <div className="top-bar">
@@ -94,8 +99,38 @@ const WeatherApp = () => {
           <BsSearch />
         </div>
       </div>
+
+      {/* import { BsSearch } from "react-icons/bs";
+          import { MdOutlineClear } from "react-icons/md";
+          import { MdCloudQueue } from "react-icons/md";
+          import { BsCloudDrizzle } from "react-icons/bs";
+          import { GiHeavyRain } from "react-icons/gi";
+          import { BsSnow2 } from "react-icons/bs";
+          import { RiCloudWindyLine } from "react-icons/ri";
+          import { WiHumidity } from "react-icons/wi"; */}
+
       <div className="weather-image">
-        <MdCloudQueue />
+        {["01d", "01n"].includes(weatherCode) ? (
+          <MdCloudQueue />
+        ) : ["02d", "02n"].includes(weatherCode) ? (
+          <MdCloudQueue />
+        ) : ["03d", "03n"].includes(weatherCode) ? (
+          <MdOutlineClear />
+        ) : ["04d", "04n"].includes(weatherCode) ? (
+          <BsCloudDrizzle />
+        ) : ["09d", "09n"].includes(weatherCode) ? (
+          <GiHeavyRain />
+        ) : ["10d", "10n"].includes(weatherCode) ? (
+          <MdCloudQueue />
+        ) : ["11d", "11n"].includes(weatherCode) ? (
+          <MdCloudQueue />
+        ) : ["13d", "13n"].includes(weatherCode) ? (
+          <BsSnow2 />
+        ) : ["50d", "50n"].includes(weatherCode) ? (
+          <RiCloudWindyLine />
+        ) : (
+          <MdOutlineClear />
+        )}
       </div>
       <div className="weather-temp">{w_data.main.temp.toFixed(0)}°</div>
       <div className="weather-location">{w_data.name}</div>
