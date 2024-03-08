@@ -10,6 +10,11 @@ import { BsSnow2 } from "react-icons/bs";
 import { RiCloudWindyLine } from "react-icons/ri";
 import { WiHumidity } from "react-icons/wi";
 import { useState } from "react";
+import { FaCircle } from "react-icons/fa";
+import { IoPartlySunnyOutline } from "react-icons/io5";
+import { RiThunderstormsLine } from "react-icons/ri";
+import { RiMistFill } from "react-icons/ri";
+import { LuCloudy } from "react-icons/lu";
 
 const WeatherApp = () => {
   const defaultState = {
@@ -84,7 +89,6 @@ const WeatherApp = () => {
   };
 
   console.log("weatherCode", weatherCode);
-  console.log("weatherCode", ["01d", "01n"].includes(weatherCode));
 
   return (
     <div className="container">
@@ -111,39 +115,39 @@ const WeatherApp = () => {
 
       <div className="weather-image">
         {["01d", "01n"].includes(weatherCode) ? (
-          <MdCloudQueue />
+          <FaCircle className="weather-icon" />
         ) : ["02d", "02n"].includes(weatherCode) ? (
-          <MdCloudQueue />
+          <IoPartlySunnyOutline className="weather-icon" />
         ) : ["03d", "03n"].includes(weatherCode) ? (
-          <MdOutlineClear />
+          <MdCloudQueue className="weather-icon" />
         ) : ["04d", "04n"].includes(weatherCode) ? (
-          <BsCloudDrizzle />
+          <LuCloudy className="weather-icon" />
         ) : ["09d", "09n"].includes(weatherCode) ? (
-          <GiHeavyRain />
+          <GiHeavyRain className="weather-icon" />
         ) : ["10d", "10n"].includes(weatherCode) ? (
-          <MdCloudQueue />
+          <BsCloudDrizzle className="weather-icon" />
         ) : ["11d", "11n"].includes(weatherCode) ? (
-          <MdCloudQueue />
+          <RiThunderstormsLine className="weather-icon" />
         ) : ["13d", "13n"].includes(weatherCode) ? (
-          <BsSnow2 />
+          <BsSnow2 className="weather-icon" />
         ) : ["50d", "50n"].includes(weatherCode) ? (
-          <RiCloudWindyLine />
+          <RiMistFill className="weather-icon" />
         ) : (
-          <MdOutlineClear />
+          <MdCloudQueue className="weather-icon" />
         )}
       </div>
       <div className="weather-temp">{w_data.main.temp.toFixed(0)}°</div>
       <div className="weather-location">{w_data.name}</div>
       <div className="data-container">
         <div className="element">
-          <WiHumidity />
+          <WiHumidity style={{ fontSize: 35 }} />
           <div className="data">
             <div className="humidity-percent">{w_data.main.humidity}%</div>
             <div className="text">Humidity</div>
           </div>
         </div>
         <div className="element">
-          <RiCloudWindyLine />
+          <RiCloudWindyLine style={{ fontSize: 35 }} />
           <div className="data">
             <div className="wind-rate">{w_data.wind.speed} km/hour</div>
             <div className="text">Wind Speed</div>
