@@ -3,7 +3,9 @@
     height: 820px;
     margin: 75px auto;
     border-radius: 12px;
-    background-image: linear-gradient(180deg, #130754 0%, #3b2f80 10%);
+    /* background-image: linear-gradient(180deg, #130754 0%, #3b2f80 10%); */
+    background: linear-gradient(45deg, #f88508, #ffcb63, #f6fad9);
+    /* background-image: linear-gradient(180deg, #130754 0%, #3b2f80 10%); */
 }
 .top-bar{
     display: flex;
